@@ -1,0 +1,1 @@
+from .trajectory import ball_landing
