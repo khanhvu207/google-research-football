@@ -10,23 +10,30 @@ class Normal:
 		self.util = compute.Utilities(obs)
 	
 	def insideShotRange(self, pos):
-		dist_to_goal = self.util.dist(pos, ENEMY_GOAL)
-		return dist_to_goal < SHOT_RANGE_RADIUS
+		return shot_range[0][0] <= self.playerPos[0] <= shot_range[0][1] and shot_range[1][0] <= self.playerPos[1] <= shot_range[1][1]
 
 	def makeAction(self):
-		# Make sure the player is sprinting while he is inside the SPRINT_RANGE
-		if 0 < self.playerPos[0] < SPRINT_RANGE and Action.Sprint not in self.obs["sticky_actions"]:
-			return Action.Sprint
-		elif SPRINT_RANGE < self.playerPos[0] and Action.Sprint in self.obs["sticky_actions"]:
-			return Action.ReleaseSprint
+		import numpy as np
+
+		if 0 < self.playerPos[0] < SPRINT_RANGE:
+			if Action.Sprint not in self.obs["sticky_actions"]:
+				return Action.Sprint
+		elif SPRINT_RANGE < self.playerPos[0]:
+			if Action.Sprint in self.obs["sticky_actions"]:
+				return Action.ReleaseSprint
 		
 		if self.hasBall:
 			if self.insideShotRange(self.playerPos):
-				return Action.Shot
+				return self.util.withSticky(Action.Shot, Action.BottomRight)
+		
 			elif abs(self.obs["right_team"][GOALKEEPER][0] - 1) > GOALIE_OUT and self.playerPos[0] > LONG_SHOT_X and abs(self.playerPos[1]) < LONG_SHOT_Y:
 				return Action.Shot
+				
 			else:
-				return self.util.runTowardTarget(self.playerPos, ENEMY_GOAL)
+				if self.playerPos[0] > 0.6:
+					return Action.BottomRight
+				else:
+					return self.util.runTowardTarget(self.playerPos, ENEMY_GOAL)
 		else:
-			ball_landing_pos = self.obs["ball"]
+			ball_landing_pos = self.util.ballLandingPos(self.obs["ball"], self.obs["ball_direction"]) if self.obs["ball"][2] > PICK_HEIGHT else self.obs["ball"]
 			return self.util.runTowardTarget(self.playerPos, ball_landing_pos)
