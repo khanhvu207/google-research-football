@@ -1,7 +1,10 @@
-import numpy as np
+import sys
+sys.path.append("/kaggle_simulations/agent")
 
+import numpy as np
 from kaggle_environments.envs.football.helpers import *
 from scenarios import corner, penalty, freekick, normal
+from consts import *
 
 class agentLogic:
 	def __init__(self, obs):
@@ -38,9 +41,8 @@ class agentLogic:
 		if self.isFreeKick():
 			return freekick.FreeKick(self.obs).makeFreeKickAction()
 		
-		action = normal.Normal(self.obs).makeAction()
-		# print(action)
-		return action
+		logic = normal.Normal(self.obs)
+		return logic.makeAction()
 
 @human_readable_agent
 def agent(obs):
