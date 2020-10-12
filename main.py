@@ -3,7 +3,7 @@ sys.path.append("/kaggle_simulations/agent")
 
 import numpy as np
 from kaggle_environments.envs.football.helpers import *
-from scenarios import corner, penalty, freekick, normal
+from scenarios import corner, penalty, freekick, normal, throwin, kickoff
 from consts import *
 
 class agentLogic:
@@ -25,7 +25,7 @@ class agentLogic:
 	def isGoalKick(self):
 		return self.obs["game_mode"] == GameMode.GoalKick
 
-	def isThrowInself(self):
+	def isThrowIn(self):
 		return self.obs["game_mode"] == GameMode.ThrowIn
 
 	def makeAction(self):
@@ -40,6 +40,12 @@ class agentLogic:
 		
 		if self.isFreeKick():
 			return freekick.FreeKick(self.obs).makeFreeKickAction()
+		
+		if self.isThrowIn():
+			return throwin.ThrowIn(self.obs).makeThrowInAction()
+		
+		if self.isKickOff():
+			return kickoff.KickOff(self.obs).makeKickOffAction()
 		
 		logic = normal.Normal(self.obs)
 		return logic.makeAction()

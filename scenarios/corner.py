@@ -8,7 +8,7 @@ class Corner:
 		self.playerPos = obs["left_team"][obs["active"]]
 
 	def makeCornerAction(self):
-		if self.playerPos[0] > 0:
-			return Action.Shot
-		else: 
-			return Action.HighPass
+		if self.playerPos[1] > 0:
+			return self.util.withSticky(Action.ShortPass, Action.TopLeft, False)
+		else:
+			return self.util.withSticky(Action.ShortPass, Action.BottomLeft, False)

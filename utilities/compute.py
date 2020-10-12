@@ -9,7 +9,15 @@ class Utilities:
 							[Action.BottomLeft, Action.Bottom, Action.BottomRight]]
 		self.dirsign = lambda x: 1 if abs(x) < 0.01 else (0 if x < 0 else 2)
 	
-	def withSticky(self, action, direction):
+	def withSticky(self, action, direction, sprinting):
+		if sprinting == True and Action.Sprint not in self.obs["sticky_actions"]:
+			return Action.Sprint
+		elif sprinting == False and Action.Sprint in self.obs["sticky_actions"]:
+			return Action.ReleaseSprint
+		if direction == None:
+			return action
+		if action == None:
+			return direction
 		return action if direction in self.obs["sticky_actions"] else direction
 
 	def runTowardTarget(self, player_pos, target_pos):
