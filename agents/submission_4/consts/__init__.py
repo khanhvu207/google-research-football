@@ -1,15 +1,24 @@
 # TUNABLE PARAMS
+SPRINT_RANGE = 0.6
+
 # Passing
 PASSING_RANGE_X = -0.2
+NEED_PASSING_RADIUS = 0.18
+
+# Controlling
+TRIGGER_DRIBBLE_RADIUS = 0.08
+
+# Defending
+CENTRAL_WIDTH = 0.2
 
 # Shooting
-SHOT_RANGE_X = 0.7
+SHOT_RANGE_X = 0.6  
 SHOT_RANGE_Y = 0.2
 LONG_SHOT_X = 0.4
 LONG_SHOT_Y = 0.2
 GOALKEEPER = 0
 GOALIE_OUT = 0.2
-SHOT_TRIGGERING_RADIUS = 0.15
+
 shot_range = [[SHOT_RANGE_X, 1], [-SHOT_RANGE_Y, SHOT_RANGE_Y]]
 
 # UNTUNABLE PARAMS
@@ -20,8 +29,3 @@ BODY_RADIUS = 0.012
 SLIDE_THRESHOLD = STEP_LENGTH + BODY_RADIUS
 ENEMY_GOAL = [1, 0]
 INF = 999
-prev_has_ball = True
-
-def modify(x):
-	global prev_has_ball
-	prev_has_ball = x

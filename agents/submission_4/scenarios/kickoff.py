@@ -9,4 +9,6 @@ class KickOff:
 		self.util = compute.Utilities(obs)
 
 	def makeKickOffAction(self):
-		return Action.HighPass
+		import numpy as np
+		passing_choice = [Action.TopRight, Action.BottomRight]
+		return self.util.withSticky(Action.HighPass, np.random.choice(passing_choice), False)

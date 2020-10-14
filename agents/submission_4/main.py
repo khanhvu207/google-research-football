@@ -1,5 +1,5 @@
 import sys
-sys.path.append("/kaggle_simulations/agent")
+sys.path.append("/agents/")
 
 import numpy as np
 from kaggle_environments.envs.football.helpers import *
@@ -46,7 +46,7 @@ class agentLogic:
 		
 		if self.isKickOff():
 			return kickoff.KickOff(self.obs).makeKickOffAction()
-
+		
 		logic = normal.Normal(self.obs)
 		return logic.makeAction()
 
