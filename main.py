@@ -2,9 +2,8 @@ import sys
 sys.path.append("/kaggle_simulations/agent")
 
 import numpy as np
+from game_modes import *
 from kaggle_environments.envs.football.helpers import *
-from scenarios import corner, penalty, freekick, normal, throwin, kickoff
-from consts import *
 
 class agentLogic:
 	def __init__(self, obs):
@@ -33,21 +32,21 @@ class agentLogic:
 		Return the agent's desire action
 		"""
 		if self.isPenalty():
-			return penalty.Penalty(self.obs).makePenaltyAction()
+			return Penalty(self.obs).makePenaltyAction()
 
 		if self.isCorner():
-			return corner.Corner(self.obs).makeCornerAction()
+			return Corner(self.obs).makeCornerAction()
 		
 		if self.isFreeKick():
-			return freekick.FreeKick(self.obs).makeFreeKickAction()
+			return FreeKick(self.obs).makeFreeKickAction()
 		
 		if self.isThrowIn():
-			return throwin.ThrowIn(self.obs).makeThrowInAction()
+			return ThrowIn(self.obs).makeThrowInAction()
 		
 		if self.isKickOff():
-			return kickoff.KickOff(self.obs).makeKickOffAction()
+			return KickOff(self.obs).makeKickOffAction()
 
-		logic = normal.Normal(self.obs)
+		logic = Normal(self.obs)
 		return logic.makeAction()
 
 @human_readable_agent
