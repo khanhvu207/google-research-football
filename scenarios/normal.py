@@ -58,10 +58,10 @@ class Normal:
 				else:
 					return self.util.withSticky(Action.HighPass, Action.BottomLeft, False)
 
-			if self.encounterEnemyGoalkeeper(SHOT_TRIGGERING_RADIUS):
-				return self.util.withSticky(Action.Shot, None, False)
+			# if self.encounterEnemyGoalkeeper(SHOT_TRIGGERING_RADIUS):
+			# 	return self.util.withSticky(Action.Shot, None, False)
 
-			elif self.insideShotRange(self.playerPos):
+			if self.insideShotRange(self.playerPos):
 				return self.util.withSticky(Action.Shot, None, False)
 			
 			elif abs(self.obs["right_team"][GOALKEEPER][0] - 1) > GOALIE_OUT and self.playerPos[0] > LONG_SHOT_X and abs(self.playerPos[1]) < LONG_SHOT_Y:
