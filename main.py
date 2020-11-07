@@ -1,7 +1,6 @@
 import sys
 sys.path.append("/kaggle_simulations/agent")
 
-import numpy as np
 from game_modes import *
 from kaggle_environments.envs.football.helpers import *
 

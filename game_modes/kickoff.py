@@ -1,5 +1,5 @@
 from kaggle_environments.envs.football.helpers import *
-from utilities import *
+from utils import *
 from consts import *
 
 class KickOff:

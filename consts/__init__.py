@@ -1,16 +1,12 @@
 # TUNABLE PARAMS
+import os
+
 # Passing
-PASSING_RANGE_X = -0.2
+PASSING_RANGE_X = -0.2 #float(os.environ["PASSING_RANGE_X"]) 
 
 # Shooting
-SHOT_RANGE_X = 0.7
-SHOT_RANGE_Y = 0.2
-LONG_SHOT_X = 0.4
-LONG_SHOT_Y = 0.2
-GOALKEEPER = 0
-GOALIE_OUT = 0.2
-SHOT_TRIGGERING_RADIUS = 0.15
-shot_range = [[SHOT_RANGE_X, 1], [-SHOT_RANGE_Y, SHOT_RANGE_Y]]
+SHOT_RANGE_X = float(os.environ["SHOT_RANGE_X"]) #0.7
+SHOT_RANGE_Y = float(os.environ["SHOT_RANGE_Y"]) #0.2
 
 # UNTUNABLE PARAMS
 GRAVITY = 0.098
@@ -20,8 +16,3 @@ BODY_RADIUS = 0.012
 SLIDE_THRESHOLD = STEP_LENGTH + BODY_RADIUS
 ENEMY_GOAL = [1, 0]
 INF = 999
-prev_has_ball = True
-
-def modify(x):
-	global prev_has_ball
-	prev_has_ball = x
