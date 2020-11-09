@@ -1,12 +1,28 @@
-# TUNABLE PARAMS
 import os
 
-# Passing
-PASSING_RANGE_X = -0.2 #float(os.environ["PASSING_RANGE_X"]) 
+# # OPTUNA PARAMS
+# # Passing
+# TRIGGER_PASS = float(os.environ["TRIGGER_PASS"])
+# PASSING_RANGE_X = float(os.environ["PASSING_RANGE_X"]) 
+# CENTER_ZONE = float(os.environ["CENTER_ZONE"])
+# # Shooting
+# SHOT_RANGE_X = float(os.environ["SHOT_RANGE_X"]) 
+# SHOT_RANGE_Y = float(os.environ["SHOT_RANGE_Y"])
+GK_PROX = float(os.environ["GK_PROX"])
+# # Ball position
+# NUM_STEPS_IN_FUTURE = float(os.environ["NUM_STEPS_IN_FUTURE"])
 
+# STATIC PARAMS
+# Passing 
+TRIGGER_PASS = 0.3293761602990554
+PASSING_RANGE_X = -0.10270158805486779
+CENTER_ZONE = 0.15505470127155654
 # Shooting
-SHOT_RANGE_X = float(os.environ["SHOT_RANGE_X"]) #0.7
-SHOT_RANGE_Y = float(os.environ["SHOT_RANGE_Y"]) #0.2
+SHOT_RANGE_X = 0.6567158517594331
+SHOT_RANGE_Y = 0.2125839400490282
+# GK_PROX = 0.1000014082121619
+# Ball position
+NUM_STEPS_IN_FUTURE = 0
 
 # UNTUNABLE PARAMS
 GRAVITY = 0.098
@@ -16,3 +32,4 @@ BODY_RADIUS = 0.012
 SLIDE_THRESHOLD = STEP_LENGTH + BODY_RADIUS
 ENEMY_GOAL = [1, 0]
 INF = 999
+GOALKEEPER_ID = 0

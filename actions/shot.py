@@ -10,4 +10,4 @@ def Shot(obs):
 	NextAction = Action.Shot
 	NextDirection = HelperFuncs.runTowardTarget(PlayerPos, GoalPos)
 	HoldSprint = False
-	return HelperFuncs.withSticky(NextAction, NextDirection, HoldSprint)
+	return Action.Shot
