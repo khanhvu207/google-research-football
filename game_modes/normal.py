@@ -11,12 +11,17 @@ class Normal:
 		self.Util = Utilities(obs)
 	
 	def makeAction(self):
+		if self.PlayerPos[0] > SHOT_RANGE_X and Action.Sprint in self.Obs['sticky_actions']:
+			return Action.ReleaseSprint
+		elif self.PlayerPos[0] <= SHOT_RANGE_X and not Action.Sprint in self.Obs['sticky_actions']:
+			return Action.Sprint
+
 		if not self.HasBall:
 			return Chase(self.Obs)
 		else:
-			# if self.PlayerPos[0] > SHOT_RANGE_X and abs(self.PlayerPos[1]) < SHOT_RANGE_Y:
-			# 	return Shot(self.Obs)
-			if self.Util.dist(self.PlayerPos, self.Obs["right_team"][GOALKEEPER_ID]) <= GK_PROX:
+			if self.PlayerPos[0] > SHOT_RANGE_X and abs(self.PlayerPos[1]) < SHOT_RANGE_Y:
+				return Shot(self.Obs)
+			elif self.Util.dist(self.Obs['right_team'][GOALKEEPER_ID], ENEMY_GOAL) > LONG_SHOT and self.PlayerPos[0] > LONG_X and abs(self.PlayerPos[1]) < LONG_Y:
 				return Shot(self.Obs)
 			elif self.PlayerPos[0] <= PASSING_RANGE_X and EnemyApproaching(self.Obs) == True:
 				return Pass(self.Obs)

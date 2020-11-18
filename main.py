@@ -1,6 +1,7 @@
 import sys
 sys.path.append("/kaggle_simulations/agent")
 
+from consts import *
 from game_modes import *
 from kaggle_environments.envs.football.helpers import *
 

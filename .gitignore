@@ -3,3 +3,5 @@ venv/
 .ipynb_checkpoints/
 .idea/
 kaggle-environments/
+random_forest/model.sav
+*tar.gz
