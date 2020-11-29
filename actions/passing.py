@@ -19,7 +19,7 @@ def Pass(obs):
 
 	BestDir = Action.Right
 	if abs(PlayerPos[1]) <= CENTER_ZONE:
-		BestDir = Action.TopRight if PlayerPos[1] > 0 else Action.BottomRight
+		BestDir = Action.TopRight if PlayerPos[1] < 0 else Action.BottomRight
 
 	NextAction = Action.HighPass
 	NextDirection = BestDir

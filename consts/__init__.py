@@ -15,11 +15,11 @@ import os
 # STATIC PARAMS
 # Passing 
 TRIGGER_PASS = 0.3293761602990554
-PASSING_RANGE_X = -0.10270158805486779
+PASSING_RANGE_X = -0.20270158805486779
 CENTER_ZONE = 0.15505470127155654
 # Shooting
 SHOT_RANGE_X = 0.7 #0.6567158517594331
-SHOT_RANGE_Y = 0.15 #0.2125839400490282
+SHOT_RANGE_Y = 0.12 #0.2125839400490282
 LONG_X = 0.4
 LONG_Y = 0.2
 LONG_SHOT = 0.2
@@ -35,8 +35,9 @@ SLIDE_THRESHOLD = STEP_LENGTH + BODY_RADIUS
 ENEMY_GOAL = [1, 0]
 INF = 999
 GOALKEEPER_ID = 0
-MODEL_PATH = 'random_forest/model.sav'
+MODEL_PATH = 'behavioural_cloning/catboost.sav' #'behavioural_cloning/random_forest.sav'
 
 import pickle
+import catboost
 from sklearn.ensemble import RandomForestClassifier
 model = pickle.load(open(MODEL_PATH, 'rb'))
