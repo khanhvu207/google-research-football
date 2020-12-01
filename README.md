@@ -12,7 +12,7 @@ Our final version used a mix of behavioural cloning, which is a simple ML classi
 
 ## Behavioural Cloning
 
-This part is heavily inspired from [this notebook](https://www.kaggle.com/mlconsult/1149-ish-bot-rl-approximation). In a nutshell, approximately 15GB of replays was aggregated from the leaderboard and compiled into tabular form (Pandas Dataframe). With each pair of adjacent columns is the relative polar distance from the ball to the player, and the final column is agent's action, we tried several classification methods like Random forest, Gradient Boosting and Neural Nets to mimic top teams's player movements. We chose to use Catboost in the end due to its consistency and stabalized performance. 
+This part is heavily inspired from [this notebook](https://www.kaggle.com/mlconsult/1149-ish-bot-rl-approximation). In a nutshell, approximately 15GB of replays was aggregated from the leaderboard and compiled into tabular form (Pandas Dataframe). With each pair of adjacent columns is the relative polar distance from the ball to the player, and the final column is agent's action, we tried several classification methods like Random forest, Gradient Boosting and Neural Nets to mimic top teams's player movements. We chose to use Catboost in the end due to its consistency and stable performance. 
 
 ## Defending strategy
 
