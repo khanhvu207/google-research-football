@@ -2,7 +2,7 @@
 
 ![gif](https://github.com/khanhvu207/google-research-football/blob/random-forest-v1/demo.gif)
 
-This is my team's approach for the [Google Football competition on Kaggle](https://www.kaggle.com/c/google-football/overview). Our strongest agent had a rating of 1120 on the leaderboard (top 15%) although we didn't put much time into the contest.
+This is my team's approach for the [Google Football competition on Kaggle](https://www.kaggle.com/c/google-football/overview). Our strongest agent has a rating of 1120 on the leaderboard (top 15%) although we didn't put much time into the contest.
 
 ## Summary of our strategy
 
